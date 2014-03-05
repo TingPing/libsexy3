@@ -1,0 +1,10 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@/libsexy3
+
+Name: libsexy3
+Description: Custom Gtk3 widgets
+Version: @VERSION@
+Libs: -L${libdir} -lsexy3
+Cflags: -I${includedir}

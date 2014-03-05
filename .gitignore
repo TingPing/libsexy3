@@ -1,0 +1,78 @@
+# Object files
+*.o
+*.ko
+*.obj
+*.elf
+*.lo
+
+# Libraries
+*.lib
+*.a
+*.la
+
+# Shared objects (inc. Windows DLLs)
+*.dll
+*.so
+*.so.*
+*.dylib
+
+# Executables
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
+
+# Docs
+docs/reference/
+
+# http://www.gnu.org/software/automake
+Makefile.in
+Makefile
+
+# http://www.gnu.org/software/autoconf
+/autom4te.cache
+/aclocal.m4
+/compile
+/configure
+/depcomp
+/install-sh
+/missing
+/stamp-h1
+/config.*
+/libtool
+/ltmain.sh
+/ar-lib
+/gtk-doc.make
+/m4/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# Generated files
+libsexy/sexy-marshal.*
+libsexy/.deps/
+libsexy/.libs/
+libsexy/libsexy3.deps
+examples/vala/example
+examples/c/example
+*.pc
+*.gir
+*.typelib
+*.vapi
+
+# Translations
+po/Makefile.in.in
+po/POTFILES
+po/remove-potcdate.sed
+po/stamp-*
+*.gmo
+*.mo
+*.po~
+*.pot
+
+# Unignored
+!examples/vala/Makefile
+!examples/c/Makefile

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glade-catalog name="sexy" library="libsexy3" depends="gtk+">
+  <glade-widget-classes>
+    <glade-widget-class name="SexySpellEntry" generic-name="spellentry" title="SpellEntry">
+        <signals>
+          <signal id="word-check"/>
+        </signals>
+        <properties>
+          <property id="checked" default="True" name="Spell check enabled"/>
+        </properties>
+	</glade-widget-class>
+  </glade-widget-classes>
+  <glade-widget-group name="sexy" title="Sexy">
+    <glade-widget-class-ref name="SexySpellEntry"/>
+  </glade-widget-group>
+</glade-catalog>
+
