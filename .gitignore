@@ -1,0 +1,10 @@
+# Sharing the repo with code leaves around a lot of crap
+# ignore it all and just specify the handfull of doc related files.
+*
+!/.gitignore
+!/.nojekyll
+!/*.html
+!/c/*.html
+!/c/*.css
+!/c/*.png
+!/py/
