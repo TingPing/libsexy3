@@ -37,7 +37,7 @@ Changes
 Install
 -------
 
-### Dependancies
+### Dependencies
 
 - gtk3-devel
 - enchant-devel
