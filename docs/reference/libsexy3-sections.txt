@@ -1,0 +1,32 @@
+<SECTION>
+<FILE>sexy-spell-entry</FILE>
+<TITLE>SexySpellEntry</TITLE>
+SEXY_SPELL_ERROR
+SexySpellError
+sexy_spell_entry_new
+sexy_spell_entry_get_languages
+sexy_spell_entry_get_language_name
+sexy_spell_entry_language_is_active
+sexy_spell_entry_activate_language
+sexy_spell_entry_deactivate_language
+sexy_spell_entry_set_active_languages
+sexy_spell_entry_get_active_languages
+sexy_spell_entry_is_checked
+sexy_spell_entry_get_checked
+sexy_spell_entry_set_checked
+sexy_spell_entry_activate_default_languages
+<SUBSECTION Standard>
+SEXY_IS_SPELL_ENTRY
+SEXY_IS_SPELL_ENTRY_CLASS
+SEXY_SPELL_ENTRY
+SEXY_SPELL_ENTRY_CLASS
+SEXY_SPELL_ENTRY_GET_CLASS
+SEXY_TYPE_SPELL_ENTRY
+SexySpellEntry
+SexySpellEntryClass
+<SUBSECTION Private>
+SexySpellEntryPriv
+sexy_spell_error_quark
+sexy_spell_entry_get_type
+</SECTION>
+

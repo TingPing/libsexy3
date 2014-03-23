@@ -6,7 +6,7 @@ DOC_MAIN_SGML_FILE=$(DOC_MODULE)-docs.sgml
 DOC_SOURCE_DIR=../../libsexy
 
 SCANGOBJ_OPTIONS=
-SCAN_OPTIONS=--rebuild-sections --rebuild-types
+SCAN_OPTIONS=--rebuild-types #--rebuild-sections 
 MKDB_OPTIONS=--xml-mode --output-format=xml
 MKTMPL_OPTIONS=
 FIXXREF_OPTIONS=\
