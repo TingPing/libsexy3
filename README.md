@@ -27,6 +27,7 @@ in the future.
 
 ### Todo
 
+- Add libsexy3mm files
 - Add styling for underline
 - Add translations
 - Automate updating docs
