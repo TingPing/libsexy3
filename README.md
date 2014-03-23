@@ -1,19 +1,16 @@
-libsexy3
-========
+# libsexy3 [![Build Status](https://travis-ci.org/TingPing/libsexy3.svg?branch=master)](https://travis-ci.org/TingPing/libsexy3)
 
 This is a *"continuation"* of the libsexy library.
 Currently only spell-entry has been ported, most of the
 other widgets are no longer needed/used. More may be added
 in the future.
 
-Docs
-----
+## Docs
 
 - [C](http://tingping.github.io/libsexy3/c)
 - [Python](http://tingping.github.io/libsexy3/py)
 
-Changes
--------
+## Changes
 
 ### Additions
 
@@ -34,8 +31,7 @@ Changes
 - Add translations
 - Automate updating docs
 
-Install
--------
+## Install
 
 ### Dependencies
 
