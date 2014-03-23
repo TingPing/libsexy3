@@ -60,7 +60,8 @@ PKG_CHECK_MODULES(PACKAGE, [$PACKAGE_MODULES])
 
 dnl #***************************** iso-codes **********************************
 AC_MSG_CHECKING([for iso-codes package])
-if $PKG_CONFIG --exists iso-codes; then
+PKG_CHECK_EXISTS(iso-codes,
+[
 	AC_MSG_RESULT([yes])
 
 	AC_MSG_CHECKING([whether iso-codes has iso-639 and iso-3166 domains])
@@ -74,10 +75,10 @@ if $PKG_CONFIG --exists iso-codes; then
 		AC_MSG_RESULT([no])
 		AC_MSG_ERROR([iso-638 or iso-3166 not found])
 	fi
-else
+],[
 	AC_MSG_RESULT([no])
 	AC_MSG_ERROR([iso-codes not found])
-fi
+])
 
 AC_CONFIG_FILES([
 Makefile
