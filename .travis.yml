@@ -1,7 +1,7 @@
 language: c
 compiler: gcc
 before_script:
-    - sudo apt-get install -qq build-essential gnome-common libgtk-3-dev libenchant-dev gtk-doc-tools libvala-dev gobject-introspection
+    - sudo apt-get install -qq build-essential gnome-common libgtk-3-dev libenchant-dev gtk-doc-tools valac-0.16 gobject-introspection
 script: 
     - ./autogen.sh
     - ./configure --enable-gtk-doc
