@@ -51,7 +51,7 @@ typedef struct _SexySpellEntryPriv  SexySpellEntryPriv;
  * Type of error.
  */
 typedef enum {
-	SEXY_SPELL_ERROR_BACKEND,
+	SEXY_SPELL_ERROR_BACKEND
 } SexySpellError;
 
 struct _SexySpellEntry

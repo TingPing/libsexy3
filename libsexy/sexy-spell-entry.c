@@ -91,7 +91,7 @@ static void entry_strsplit_utf8 (GtkEntry *entry, gchar ***set, gint **starts, g
 static GtkEntryClass *parent_class = NULL;
 
 G_DEFINE_TYPE_EXTENDED(SexySpellEntry, sexy_spell_entry, GTK_TYPE_ENTRY, 0,
-					G_IMPLEMENT_INTERFACE(GTK_TYPE_EDITABLE, sexy_spell_entry_editable_init));
+					G_IMPLEMENT_INTERFACE(GTK_TYPE_EDITABLE, sexy_spell_entry_editable_init))
 
 #define SEXY_SPELL_ENTRY_GET_PRIVATE(obj) \
 		(G_TYPE_INSTANCE_GET_PRIVATE ((obj), SEXY_TYPE_SPELL_ENTRY, SexySpellEntryPriv))
@@ -111,7 +111,6 @@ enum
 	PROP_CHECKED,
 	N_PROPERTIES
 };
-static GParamSpec *obj_properties[N_PROPERTIES] = {NULL,};
 
 static gboolean
 spell_accumulator(GSignalInvocationHint *hint, GValue *return_accu, const GValue *handler_return, gpointer data)
@@ -140,14 +139,12 @@ sexy_spell_entry_class_init(SexySpellEntryClass *klass)
 {
 	GObjectClass *object_class;
 	GtkWidgetClass *widget_class;
-	GtkEntryClass *entry_class;
 
 	g_type_class_add_private(klass, sizeof(SexySpellEntryPriv));
 	parent_class = g_type_class_peek_parent(klass);
 
 	object_class = G_OBJECT_CLASS(klass);
 	widget_class = GTK_WIDGET_CLASS(klass);
-	entry_class = GTK_ENTRY_CLASS(klass);
 
 	klass->word_check = default_word_check;
 
@@ -765,7 +762,7 @@ sexy_spell_entry_recheck_all(SexySpellEntry *entry)
 	GdkRectangle rect;
 	GtkWidget *widget = GTK_WIDGET(entry);
 	PangoLayout *layout;
-	int length, i;
+	int i;
 
 	if (entry->priv->checked == FALSE)
 		return;
