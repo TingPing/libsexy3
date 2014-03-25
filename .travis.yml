@@ -1,7 +1,7 @@
 language: c
 compiler: gcc
 before_install: sudo apt-get update -qq
-install: sudo apt-get install -qq build-essential gnome-common libgtk-3-dev libenchant-dev gtk-doc-tools valac-0.16 gobject-introspection iso-codes
+install: sudo apt-get install -qq build-essential gnome-common libgtk-3-dev libenchant-dev libgirepository1.0-dev gtk-doc-tools iso-codes
 script: 
     - ./autogen.sh
     - ./configure --enable-gtk-doc
