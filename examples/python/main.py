@@ -17,7 +17,7 @@ def main():
 	win.connect('delete-event', Gtk.main_quit)
 
 	entry = Sexy.SpellEntry()
-	entry.set_text('I was nto!')
+	entry.set_text('I was nto, but i hav a custom style!')
 	box = builder.get_object('box')
 	box.add(entry)
 

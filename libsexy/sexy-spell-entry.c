@@ -51,6 +51,7 @@ struct _SexySpellEntryPriv
 {
 	EnchantBroker *broker;
 	PangoAttrList *attr_list;
+	GdkColor *underline_color;
 	gint mark_character;
 	GHashTable *dict_hash;
 	GSList *dict_list;
@@ -70,6 +71,7 @@ static gint sexy_spell_entry_draw (GtkWidget *widget, cairo_t *cr);
 static gint sexy_spell_entry_button_press(GtkWidget *widget, GdkEventButton *event);
 static void sexy_spell_entry_set_property (GObject *obj, guint prop_id, const GValue *value, GParamSpec *pspec);
 static void sexy_spell_entry_get_property (GObject *obj, guint prop_id, GValue *value, GParamSpec *pspec);
+static void sexy_spell_entry_style_updated (GtkWidget *widget);
 
 
 /* GtkEditable handlers */
@@ -155,6 +157,7 @@ sexy_spell_entry_class_init(SexySpellEntryClass *klass)
 
 	widget_class->draw = sexy_spell_entry_draw;
 	widget_class->button_press_event = sexy_spell_entry_button_press;
+	widget_class->style_updated = sexy_spell_entry_style_updated;
 
 	/**
 	 * SexySpellEntry::word-check:
@@ -189,6 +192,18 @@ sexy_spell_entry_class_init(SexySpellEntryClass *klass)
 							g_param_spec_boolean ("checked", "Checked",
 										"If checking spelling is enabled",
 										TRUE, G_PARAM_READWRITE));
+	/**
+	 * SexySpellEntry:underline-color:
+	 *
+	 * The underline color of misspelled words.
+	 * Defaults to red.
+	 *
+	 * Since: 1.0
+	 */
+	gtk_widget_class_install_style_property (widget_class,
+							g_param_spec_boxed ("underline-color", "Underline Color",
+										 "Underline color of misspelled words.",
+										 GDK_TYPE_COLOR, G_PARAM_READABLE));
 }
 
 static void
@@ -270,8 +285,18 @@ sexy_spell_entry_find_position (SexySpellEntry *entry, gint x)
 static void
 insert_underline(SexySpellEntry *entry, guint start, guint end)
 {
-	PangoAttribute *ucolor = pango_attr_underline_color_new (65535, 0, 0);
+	PangoAttribute *ucolor;
 	PangoAttribute *unline = pango_attr_underline_new (PANGO_UNDERLINE_ERROR);
+	GtkStyleContext *context;
+
+	if (entry->priv->underline_color)
+	{
+		GdkColor *uc = entry->priv->underline_color;
+
+		ucolor = pango_attr_underline_color_new (uc->red, uc->green, uc->blue);
+	}
+	else
+		ucolor = pango_attr_underline_color_new (65535, 0, 0);
 
 	ucolor->start_index = start;
 	unline->start_index = start;
@@ -808,6 +833,26 @@ sexy_spell_entry_draw(GtkWidget *widget, cairo_t *cr)
 	}
 
 	return GTK_WIDGET_CLASS(parent_class)->draw (widget, cr);
+}
+
+static void
+sexy_spell_entry_style_updated (GtkWidget *widget)
+{
+	SexySpellEntry *entry = SEXY_SPELL_ENTRY(widget);
+	SexySpellEntryPriv *priv = SEXY_SPELL_ENTRY_GET_PRIVATE(entry);
+	GdkColor *underline_color = NULL;
+	GdkRectangle rect;
+
+	GTK_WIDGET_CLASS (parent_class)->style_updated (widget);
+
+	gtk_widget_style_get (widget, "underline-color", &underline_color, NULL);
+
+	if (priv->underline_color && priv->underline_color != underline_color)
+		gdk_color_free (priv->underline_color);
+
+	priv->underline_color = underline_color;
+
+	sexy_spell_entry_recheck_all (entry);
 }
 
 static gint

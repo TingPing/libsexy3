@@ -18,6 +18,7 @@ in the future.
 - GIR files
 - VAPI files
 - Use gobject-properties
+- Add underline-color style
 
 ### Differences
 
@@ -28,7 +29,6 @@ in the future.
 ### Todo
 
 - Add libsexy3mm files
-- Add styling for underline
 - Add translations
 - Automate updating docs
 
