@@ -4,6 +4,7 @@
 !/.gitignore
 !/.nojekyll
 !/*.html
+!/*.css
 !/c/*.html
 !/c/*.css
 !/c/*.png

@@ -1,0 +1,52 @@
+@import url(http://fonts.googleapis.com/css?family=Allura);
+@import url(http://fonts.googleapis.com/css?family=Gilda+Display);
+@import url(http://fonts.googleapis.com/css?family=Kite+One);
+
+body {
+    background-image: url(http://subtlepatterns.com/patterns/ricepaper_v3.png);
+}
+
+a, a:hover, a:active, a:focus {
+    text-decoration: none;
+}
+
+#page-title {
+    font-family: 'Gilda Display', serif;
+    font-size: 72px;
+}
+
+#page-title-sub {
+    color: #C02727;
+    font-family: 'Allura', cursive;
+    font-size: 112px;
+}
+
+#title {
+    margin-top: 100px;
+}
+
+#description {
+    font-family: 'Kite One', sans-serif;
+}
+
+#links {
+    margin-top: 40px;
+}
+
+.panel-heading {
+    border-radius: 3px;
+
+    font-family: 'Gilda Display', serif;
+    font-size: 1.7em;
+    margin: -1px;
+}
+
+.panel-custom-1 > .panel-heading {
+    background-color: grey;
+    color: white;
+}
+
+.panel-custom-2 > .panel-heading {
+    background-color: #75507b;
+    color: white;
+}
