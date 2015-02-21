@@ -7,6 +7,21 @@ AC_CONFIG_MACRO_DIR(m4)
 AM_INIT_AUTOMAKE([foreign -Wall dist-xz])
 AM_SILENT_RULES([yes])
 
+dnl #************************* platform ******************************
+AC_CANONICAL_HOST
+
+platform_win32=no
+case $host_os in
+	*mingw*|*cygwin*|*msys*)
+		platform_win32=yes;;
+	*);;
+esac
+
+if test "$platform_win32" = yes; then
+	NO_UNDEFINED="-no-undefined"
+	AC_SUBST(NO_UNDEFINED)
+fi
+
 dnl #************************ versioning *****************************
 LIBSEXY_MAJOR_VERSION=1
 LIBSEXY_MINOR_VERSION=0
