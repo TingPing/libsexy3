@@ -19,7 +19,7 @@
  */
 
 #include <gtk/gtk.h>
-#include <libsexy3/sexy-spell-entry.h>
+#include <sexy-spell-entry.h>
 
 int
 main(int argc, char **argv)
