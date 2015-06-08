@@ -66,7 +66,7 @@ void sexy_spell_entry_deactivate_language(SexySpellEntry *entry, const gchar *la
 gboolean sexy_spell_entry_set_active_languages(SexySpellEntry *entry, GSList *langs, GError **error);
 GSList* sexy_spell_entry_get_active_languages(SexySpellEntry *entry);
 #ifndef G_DISABLE_DEPRECATED
-gboolean sexy_spell_entry_is_checked(SexySpellEntry *entry);
+gboolean sexy_spell_entry_is_checked(SexySpellEntry *entry) G_GNUC_DEPRECATED_FOR(sexy_spell_entry_get_checked);
 #endif
 gboolean sexy_spell_entry_get_checked(SexySpellEntry *entry);
 void sexy_spell_entry_set_checked(SexySpellEntry *entry, gboolean checked);
