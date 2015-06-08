@@ -29,7 +29,6 @@
 #include <string.h>
 
 #include "gtkspell-iso-codes.h"
-#include "../config.h"
 
 #define ISO_639_DOMAIN	"iso_639"
 #define ISO_3166_DOMAIN	"iso_3166"
