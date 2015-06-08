@@ -290,7 +290,7 @@ insert_underline(SexySpellEntry *entry, guint start, guint end)
 	{
 		GdkRGBA *uc = priv->underline_color;
 
-		ucolor = pango_attr_underline_color_new (uc->red, uc->green, uc->blue);
+		ucolor = pango_attr_underline_color_new (uc->red * 65535, uc->green * 65535, uc->blue * 65535);
 	}
 	else
 		ucolor = pango_attr_underline_color_new (65535, 0, 0);
