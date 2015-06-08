@@ -1,4 +1,4 @@
-# libsexy3 [![Build Status](https://travis-ci.org/TingPing/libsexy3.svg?branch=master)](https://travis-ci.org/TingPing/libsexy3)
+# libsexy3
 
 This is a *"continuation"* of the libsexy library.
 Currently only spell-entry has been ported, most of the
