@@ -21,6 +21,10 @@
 
 /* vim: set ts=4 sw=4 wm=5 : */
 
+#ifdef HAVE_CONFIG_H
+# include "config.h"
+#endif
+
 #include <libintl.h>
 #include <string.h>
 
