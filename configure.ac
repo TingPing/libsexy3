@@ -4,8 +4,11 @@ AC_INIT(libsexy3, 1.0.0)
 AC_COPYRIGHT([Copyright 2005-2006 Christian Hammond])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_MACRO_DIR(m4)
-AM_INIT_AUTOMAKE([foreign -Wall dist-xz])
+AM_INIT_AUTOMAKE([1.12 tar-pax dist-xz no-dist-gzip subdir-objects no-define foreign -Wall])
 AM_SILENT_RULES([yes])
+
+AX_IS_RELEASE([git-directory])
+AX_CHECK_ENABLE_DEBUG([yes], [G_ENABLE_DEBUG], [G_DISABLE_ASSERT G_DISABLE_CHECKS G_DISABLE_CAST_CHECKS])
 
 dnl #************************* platform ******************************
 AC_CANONICAL_HOST
@@ -54,56 +57,54 @@ AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE,"$GETTEXT_PACKAGE",[Gettext package name])
 
 dnl #*************************** programs/libs *******************************
 AC_PROG_CC
+AC_PROG_CC_C99
 AM_PROG_AR
 AC_PROG_INSTALL
-AM_PROG_LIBTOOL
+AC_SYS_LARGEFILE
+
+LT_PREREQ([2.2.0])
+LT_INIT
+
 IT_PROG_INTLTOOL([0.40.0])
 AM_GLIB_GNU_GETTEXT
-
-AC_C_CONST
-AC_TYPE_SIZE_T
-AC_EXEEXT
-AC_SYS_LARGEFILE
-CFLAGS="$CFLAGS -pedantic"
 
 GTK_DOC_CHECK([1.4], [--flavour no-tmpl])
 GOBJECT_INTROSPECTION_CHECK([1.30.0])
 VAPIGEN_CHECK([0.18])
 AC_PATH_PROG(GLIB_GENMARSHAL, glib-genmarshal, no)
 
-PACKAGE_MODULES="glib-2.0, gtk+-3.0, enchant"
-PKG_CHECK_MODULES(PACKAGE, [$PACKAGE_MODULES])
+PKG_PROG_PKG_CONFIG([0.28])
+PKG_CHECK_MODULES(PACKAGE, [glib-2.0, gtk+-3.0, enchant])
 
 dnl #***************************** iso-codes **********************************
 AC_MSG_CHECKING([for iso-codes package])
-PKG_CHECK_EXISTS(iso-codes,
-[
+PKG_CHECK_EXISTS(iso-codes, [
 	AC_MSG_RESULT([yes])
 
 	AC_MSG_CHECKING([whether iso-codes has iso-639 and iso-3166 domains])
-	if $PKG_CONFIG --variable=domains iso-codes | grep -q 639 && \
-	   $PKG_CONFIG --variable=domains iso-codes | grep -q 3166 ; then
+	AS_IF([`$PKG_CONFIG --variable=domains iso-codes | grep -q 639` && \
+	       `$PKG_CONFIG --variable=domains iso-codes | grep -q 3166`], [
 		AC_DEFINE_UNQUOTED([ISO_CODES_PREFIX],["`$PKG_CONFIG --variable=prefix iso-codes`"],[ISO codes prefix])
 		AC_DEFINE_UNQUOTED([ISO_CODES_LOCALEDIR],["$ISO_CODES_PREFIX/share/locale"],[ISO codes locale dir])
 		AC_DEFINE([HAVE_ISO_CODES],[1],[iso-codes available])
 		AC_MSG_RESULT([yes])
-	else
+	],[
 		AC_MSG_RESULT([no])
 		AC_MSG_ERROR([iso-638 or iso-3166 not found])
-	fi
+	])
 ],[
 	AC_MSG_RESULT([no])
 	AC_MSG_ERROR([iso-codes not found])
 ])
 
 AC_CONFIG_FILES([
-Makefile
-libsexy/Makefile
-data/libsexy3.pc
-data/Makefile
-docs/Makefile
-docs/reference/Makefile
-po/Makefile.in
+	Makefile
+	libsexy/Makefile
+	data/libsexy3.pc
+	data/Makefile
+	docs/Makefile
+	docs/reference/Makefile
+	po/Makefile.in
 ])
 
 AC_OUTPUT
@@ -113,6 +114,7 @@ echo
 echo "Configuration summary for $PACKAGE v$VERSION:"
 echo "  - Host:                  ${host}"
 echo "  - Prefix:                ${prefix}"
+echo "  - Debug:                 $enable_debug"
 echo "  - GObject introspection: $enable_introspection"
 echo "  - Vala bindings:         $enable_vala"
 echo "  - Documentation:         $enable_gtk_doc"

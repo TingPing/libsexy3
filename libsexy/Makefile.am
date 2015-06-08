@@ -49,7 +49,7 @@ libsexy3.deps:
 sexy-marshal.h:	marshal.list
 	$(AM_V_GEN) $(GLIB_GENMARSHAL) --prefix=sexy_marshal ./marshal.list --header > sexy-marshal.h
 
-sexy-marshal.c:	marshal.list
+sexy-marshal.c:	sexy-marshal.h marshal.list
 	$(AM_V_GEN) $(GLIB_GENMARSHAL) --prefix=sexy_marshal ./marshal.list --body > sexy-marshal.c
 
 BUILT_SOURCES = \
