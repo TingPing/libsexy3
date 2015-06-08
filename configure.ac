@@ -74,7 +74,10 @@ VAPIGEN_CHECK([0.18])
 AC_PATH_PROG(GLIB_GENMARSHAL, glib-genmarshal, no)
 
 PKG_PROG_PKG_CONFIG([0.28])
-PKG_CHECK_MODULES(PACKAGE, [glib-2.0, gtk+-3.0, enchant])
+PKG_CHECK_MODULES(PACKAGE, [glib-2.0 >= 2.44 gtk+-3.0 enchant])
+
+AC_DEFINE([GLIB_VERSION_MIN_REQUIRED], [GLIB_VERSION_2_44], [Dont warn using older APIs])
+AC_DEFINE([GLIB_VERSION_MAX_ALLOWED], [GLIB_VERSION_2_44], [Prevents using newer APIs])
 
 dnl #***************************** iso-codes **********************************
 AC_MSG_CHECKING([for iso-codes package])

@@ -21,26 +21,11 @@
 
 #pragma once
 
-typedef struct _SexySpellEntry      SexySpellEntry;
-typedef struct _SexySpellEntryClass SexySpellEntryClass;
-typedef struct _SexySpellEntryPriv  SexySpellEntryPriv;
-
 #include <gtk/gtk.h>
 
-#define SEXY_TYPE_SPELL_ENTRY \
-		(sexy_spell_entry_get_type())
-#define SEXY_SPELL_ENTRY(obj) \
-		(G_TYPE_CHECK_INSTANCE_CAST((obj), SEXY_TYPE_SPELL_ENTRY, SexySpellEntry))
-#define SEXY_SPELL_ENTRY_CLASS(klass) \
-		(G_TYPE_CHECK_CLASS_CAST((klass), SEXY_TYPE_SPELL_ENTRY, SexySpellEntryClass))
-#define SEXY_IS_SPELL_ENTRY(obj) \
-		(G_TYPE_CHECK_INSTANCE_TYPE((obj), SEXY_TYPE_SPELL_ENTRY))
-#define SEXY_IS_SPELL_ENTRY_CLASS(klass) \
-		(G_TYPE_CHECK_CLASS_TYPE((klass), SEXY_TYPE_SPELL_ENTRY))
-#define SEXY_SPELL_ENTRY_GET_CLASS(obj) \
-		(G_TYPE_INSTANCE_GET_CLASS((obj), SEXY_TYPE_SPELL_ENTRY, SexySpellEntryClass))
-#define SEXY_SPELL_ERROR \
-		(sexy_spell_error_quark())
+#define SEXY_SPELL_ERROR (sexy_spell_error_quark())
+#define SEXY_TYPE_SPELL_ENTRY (sexy_spell_entry_get_type())
+G_DECLARE_DERIVABLE_TYPE(SexySpellEntry, sexy_spell_entry, SEXY, SPELL_ENTRY, GtkEntry)
 
 /**
  * SexySpellError:
@@ -54,12 +39,6 @@ typedef enum {
 	SEXY_SPELL_ERROR_BACKEND
 } SexySpellError;
 
-struct _SexySpellEntry
-{
-	GtkEntry parent_object;
-
-	SexySpellEntryPriv *priv;
-};
 
 struct _SexySpellEntryClass
 {
@@ -68,6 +47,7 @@ struct _SexySpellEntryClass
 	/* Signals */
 	gboolean (*word_check)(SexySpellEntry *entry, const gchar *word);
 
+  	/*< private >*/
 	void (*_gtk_reserved1) (void);
 	void (*_gtk_reserved2) (void);
 	void (*_gtk_reserved3) (void);
@@ -75,7 +55,6 @@ struct _SexySpellEntryClass
 
 G_BEGIN_DECLS
 
-GType sexy_spell_entry_get_type(void);
 GtkWidget* sexy_spell_entry_new(void);
 GQuark sexy_spell_error_quark(void);
 
