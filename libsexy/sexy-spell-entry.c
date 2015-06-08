@@ -51,7 +51,7 @@ typedef struct
 {
 	EnchantBroker *broker;
 	PangoAttrList *attr_list;
-	GdkColor *underline_color;
+	GdkRGBA *underline_color;
 	gint mark_character;
 	GHashTable *dict_hash;
 	GSList *dict_list;
@@ -199,7 +199,7 @@ sexy_spell_entry_class_init(SexySpellEntryClass *klass)
 	gtk_widget_class_install_style_property (widget_class,
 							g_param_spec_boxed ("underline-color", "Underline Color",
 										 "Underline color of misspelled words.",
-										 GDK_TYPE_COLOR, G_PARAM_READABLE));
+										 GDK_TYPE_RGBA, G_PARAM_READABLE));
 }
 
 static void
@@ -288,7 +288,7 @@ insert_underline(SexySpellEntry *entry, guint start, guint end)
 
 	if (priv->underline_color)
 	{
-		GdkColor *uc = priv->underline_color;
+		GdkRGBA *uc = priv->underline_color;
 
 		ucolor = pango_attr_underline_color_new (uc->red, uc->green, uc->blue);
 	}
@@ -848,14 +848,14 @@ sexy_spell_entry_style_updated (GtkWidget *widget)
 {
 	SexySpellEntry *entry = SEXY_SPELL_ENTRY(widget);
 	SexySpellEntryPrivate *priv = sexy_spell_entry_get_instance_private (entry);
-	GdkColor *underline_color = NULL;
+	GdkRGBA *underline_color = NULL;
 
 	GTK_WIDGET_CLASS (sexy_spell_entry_parent_class)->style_updated (widget);
 
 	gtk_widget_style_get (widget, "underline-color", &underline_color, NULL);
 
 	if (priv->underline_color && priv->underline_color != underline_color)
-		gdk_color_free (priv->underline_color);
+		gdk_rgba_free (priv->underline_color);
 
 	priv->underline_color = underline_color;
 
