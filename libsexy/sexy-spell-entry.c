@@ -287,7 +287,6 @@ insert_underline(SexySpellEntry *entry, guint start, guint end)
 {
 	PangoAttribute *ucolor;
 	PangoAttribute *unline = pango_attr_underline_new (PANGO_UNDERLINE_ERROR);
-	GtkStyleContext *context;
 
 	if (entry->priv->underline_color)
 	{
@@ -841,7 +840,6 @@ sexy_spell_entry_style_updated (GtkWidget *widget)
 	SexySpellEntry *entry = SEXY_SPELL_ENTRY(widget);
 	SexySpellEntryPriv *priv = SEXY_SPELL_ENTRY_GET_PRIVATE(entry);
 	GdkColor *underline_color = NULL;
-	GdkRectangle rect;
 
 	GTK_WIDGET_CLASS (parent_class)->style_updated (widget);
 
