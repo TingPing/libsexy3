@@ -852,7 +852,8 @@ sexy_spell_entry_style_updated (GtkWidget *widget)
 
 	priv->underline_color = underline_color;
 
-	sexy_spell_entry_recheck_all (entry);
+	if (entry->priv->words != NULL)
+		sexy_spell_entry_recheck_all (entry);
 }
 
 static gint
