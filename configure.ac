@@ -97,6 +97,26 @@ PKG_CHECK_EXISTS(iso-codes, [
 	AC_MSG_ERROR([iso-codes not found])
 ])
 
+AX_APPEND_COMPILE_FLAGS([ \
+	-std=gnu99 \
+	-funsigned-char \
+	-Wall \
+	-Wextra \
+	-Winline \
+	-Wno-padded \
+	-Wno-unused-parameter \
+	-Wstrict-prototypes \
+	-Wmissing-prototypes \
+	-Werror=implicit-function-declaration \
+	-Werror=pointer-arith \
+	-Werror=init-self \
+	-Werror=format-security \
+	-Werror=format=2 \
+	-Werror=missing-include-dirs \
+	-Werror=date-time \
+])
+
+
 AC_CONFIG_FILES([
 	Makefile
 	libsexy/Makefile
