@@ -42,7 +42,7 @@
           <object class="SexySpellEntry" id="spellentry">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
-            <property name="text" translatable="yes">I was mdae in glade with spll check off</property>
+            <property name="text" translatable="no">I was mdae in glade with spll check off</property>
             <property name="checked">False</property>
           </object>
           <packing>
