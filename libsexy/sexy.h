@@ -21,4 +21,4 @@
 
 #pragma once
 
-#include <libsexy3/sexy-spell-entry.h>
+#include <sexy-spell-entry.h>
