@@ -3,11 +3,11 @@ AM_CPPFLAGS = -I$(top_srcdir) $(PACKAGE_CFLAGS)
 sexyincdir = $(includedir)/libsexy3
 sexy_headers = sexy.h sexy-spell-entry.h
 sexyinc_HEADERS = $(sexy_headers)
-noinst_HEADERS = gtkspell-iso-codes.h sexy-marshal.h
+noinst_HEADERS = gtkspell-iso-codes.h
 
 lib_LTLIBRARIES = libsexy3.la
 libsexy3_la_CPPFLAGS = $(AM_CPPFLAGS)
-libsexy3_la_SOURCES = gtkspell-iso-codes.c sexy-spell-entry.c sexy-marshal.c
+libsexy3_la_SOURCES = gtkspell-iso-codes.c sexy-spell-entry.c
 libsexy3_la_LIBADD = $(PACKAGE_LIBS)
 libsexy3_la_LDFLAGS = -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) $(NO_UNDEFINED)
 
@@ -46,22 +46,10 @@ libsexy3.deps:
 		echo $$pkg >> $@; \
 	done
 
-sexy-marshal.h:	marshal.list
-	$(AM_V_GEN) $(GLIB_GENMARSHAL) --prefix=sexy_marshal ./marshal.list --header > sexy-marshal.h
-
-sexy-marshal.c:	sexy-marshal.h marshal.list
-	$(AM_V_GEN) $(GLIB_GENMARSHAL) --prefix=sexy_marshal ./marshal.list --body > sexy-marshal.c
-
-BUILT_SOURCES = \
-	sexy-marshal.h \
-	sexy-marshal.c
-
 EXTRA_DIST = \
-	marshal.list \
 	Sexy-3.0.metadata
 
 CLEANFILES = \
-	$(BUILT_SOURCES) \
 	$(gir_DATA) \
 	$(typelibs_DATA) \
 	$(vapi_DATA)

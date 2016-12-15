@@ -9,6 +9,7 @@
 *.lib
 *.a
 *.la
+.libs/
 
 # Shared objects (inc. Windows DLLs)
 *.dll
@@ -25,7 +26,7 @@
 *.hex
 
 # Docs
-docs/reference/
+docs/reference/html
 
 # http://www.gnu.org/software/automake
 Makefile.in
@@ -62,6 +63,7 @@ examples/c/example
 *.gir
 *.typelib
 *.vapi
+tags
 
 # Translations
 po/Makefile.in.in

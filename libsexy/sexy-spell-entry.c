@@ -32,7 +32,6 @@
 #include <enchant.h>
 
 #include "sexy-spell-entry.h"
-#include "sexy-marshal.h"
 #include "gtkspell-iso-codes.h"
 
 /**
@@ -173,7 +172,7 @@ sexy_spell_entry_class_init(SexySpellEntryClass *klass)
 					   G_SIGNAL_RUN_LAST,
 					   G_STRUCT_OFFSET(SexySpellEntryClass, word_check),
 					   (GSignalAccumulator) spell_accumulator, NULL,
-					   sexy_marshal_BOOLEAN__STRING,
+					   NULL,
 					   G_TYPE_BOOLEAN,
 					   1, G_TYPE_STRING);
 
